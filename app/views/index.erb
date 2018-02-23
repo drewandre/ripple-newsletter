@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ripple.fx Team</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  </head>
+    <body>
+      <header class="navigation-container">
+        <!-- <h1>Ripple</h1> -->
+        <nav class="navigation-container--items">
+          <div class="nav-mobile"><a id="nav-toggle" href="#"><span></span></a></div>
+          <ul class="nav-list">
+            <li>
+              <a href="#" class='disable-link'>Newsletter (coming soon)</a>
+            </li>
+            <li>
+              <a href="#our-team">Our Team</a>
+            </li>
+            <li>
+              <a href="#contact" class='cta-button--outline'>Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class='landing-page-wrapper'>
+        <div class='landing-page-content'>
+          <div class='landing-page-prose--container'>
+            <h1 class='landing-page-prose--header'>Ripple.fx</h1>
+            <h3 class='landing-page-prose--text'>We are a Boston-based team of engineers and musicians building a platform for building bridges between fans and artists.</h3>
+            <a href="/sign-in" class='cta-button'>REQUEST EARLY ACCESS</a>
+          </div>
+          <div id='canvas--container'>
+            <canvas id="canvas"></canvas>
+            <span id='landing-page-team--overlay'/>
+            <span id='canvas--overlay'/>
+          </div>
+        </div>
+        <div class='landing-page-team'>
+          <a id='our-team'><h1 class='landing-page-team--header'>Meet the team</h1></a>
+          <div class='landing-page-team--cards'>
+            <div class='landing-page-team--cards--profile'>
+              <h1 class="landing-page-team--cards--profile--img">Image here</h1>
+              <h3 class='landing-page-team--cards--profile--name'>Gregory Kollmer</h3>
+              <h4 class='landing-page-team--cards--profile--title'>Co-Founder</h4>
+              <!-- <h4 class='landing-page-team--cards--profile--info'>BIO HERE</h4> -->
+              <a href='https://www.linkedin.com/in/gregorykollmer/' class='landing-page-team--cards--profile--contact'>LinkedIn</a>
+              <a href='mailto:greg@palmos.co' class='landing-page-team--cards--profile--contact'>Email</a>
+            </div>
+            <div class='landing-page-team--cards--profile'>
+              <h1 class="landing-page-team--cards--profile--img">Image here</h1>
+              <h3 class='landing-page-team--cards--profile--name'>Rick Bresnahan</h3>
+              <h4 class='landing-page-team--cards--profile--title'>Lead Engineer</h4>
+              <a href='https://www.linkedin.com/in/rickbresnahan/' class='landing-page-team--cards--profile--contact'>LinkedIn</a>
+            </div>
+            <div class='landing-page-team--cards--profile'>
+              <h1 class="landing-page-team--cards--profile--img">Image here</h1>
+              <h3 class='landing-page-team--cards--profile--name'>Troy Hodges</h3>
+              <h4 class='landing-page-team--cards--profile--title'>Co-Founder</h4>
+              <a href='https://www.linkedin.com/in/troyhodges/' class='landing-page-team--cards--profile--contact'>LinkedIn</a>
+            </div>
+            <div class='landing-page-team--cards--profile'>
+              <h1 class="landing-page-team--cards--profile--img">Image here</h1>
+              <h3 class='landing-page-team--cards--profile--name'>Aykut Akşit</h3>
+              <h4 class='landing-page-team--cards--profile--title'>Co-Founder</h4>
+              <a href='https://www.linkedin.com/in/aykutaksit/' class='landing-page-team--cards--profile--contact'>LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class='landing-page-team'>
+          <a id='contact'><h1 class='landing-page-team--header'>Contact Us</h1></a>
+          <form class='contact-form' action='/contact' method='post'>
+            <input type='text' name='name' class='contact-input' placeholder='name' required />
+            <input type='text' name='location' class='contact-input' placeholder='city' required />
+            <input type='email' name='from_email' class='contact-input' placeholder='email' required />
+            <input type='number' name='phone' class='contact-input' placeholder='phone' required />
+            <textarea class='contact-input' name='comments' placeholder='comments' required ></textarea>
+            <input type='submit' value="Send" class='cta-button--outline' />
+          </form>
+        </div>
+        <div class='footer'>
+          <div>444 Somerville Ave</div>
+          <div>Somerville, MA 02143</div>
+          <a href="tel://1-857-285-2918">(857) 285-2918</a>
+        </div>
+      </div>
+
+      <!-- <div id='root' /> -->
+    </body>
+  <!-- <script src="/bundle.js"></script> -->
+  <!-- <script src="/javascripts/particleall.js"></script>
+  <script>
+    new Particleground.particle( '#demo', {
+      num: 100
+    });
+  </script> -->
+</html>
+
+<!-- <canvas /> -->
+<!-- <script src="/javascripts/perlin.js"></script> -->
+<!-- <script src="/javascripts/p.js"></script> -->

@@ -1,0 +1,13 @@
+{
+	"name": "ripple-landing-page",
+	"version": "1.0.0",
+	"description":
+		"Landing page for Ripple.fx team - 2018 Mass Challenge Applicants",
+	"main": "index.js",
+	"scripts": {
+		"start": "rackup -s puma -p $PORT"
+	},
+	"repository": "https://github.com/drewandre/drewandre.net.git",
+	"author": "Drew André <drewjamesandre@gmail.com>",
+	"license": "MIT"
+}

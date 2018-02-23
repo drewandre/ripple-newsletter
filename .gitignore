@@ -1,0 +1,5 @@
+.bundle
+.DS_store
+node_modules
+.sass-cache
+/env.rb

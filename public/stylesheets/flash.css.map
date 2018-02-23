@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,MAAO,CACN,gBAAgB,CCDA,OAAO,CDEvB,aAAa,CAAE,IAAI,CACnB,OAAO,CAAE,SAAS,CAClB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,GAAG,CACR,KAAK,CAAE,GAAG,CACV,MAAM,CAAE,MAAM,CACd,SAAS,CAAE,KAAK",
+"sources": ["sass/flash.scss","sass/_colors.scss"],
+"names": [],
+"file": "flash.css"
+}
