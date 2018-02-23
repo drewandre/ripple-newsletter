@@ -55,6 +55,7 @@ body {
 a {
 	color: $off-white;
 	text-decoration: none;
+	transition: color 0.5s;
 }
 
 a:hover {

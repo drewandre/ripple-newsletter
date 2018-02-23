@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
-    <nav id='main-nav'>
-
-    </nav>
+    <nav id='main-nav'></nav>
     <div class='main'>
       <% flash.each do |type, message| %>
         <div class="home-centered flash flash-<%= type %>">
@@ -25,5 +23,11 @@
       <%= yield %>
     </div>
   </body>
+  <!-- <script src="/javascripts/particleall.js"></script>
+  <script>
+    new Particleground.particle( '#demo', {
+      num: 100
+    });
+  </script> -->
   <script src="/javascripts/app.js"></script>
 </html>

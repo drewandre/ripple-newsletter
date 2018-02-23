@@ -1,3 +1,5 @@
+// var JParticles = require('jparticles');
+
 // new JParticles.particle('#demo');
 
 // var effect = new JParticles.particle('#demo');
