@@ -20,10 +20,10 @@ configure :development do
 end
 
 configure do
-  RSpotify.authenticate(ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'])
-  use OmniAuth::Builder do
-  provider :spotify, ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'], scope: 'user-read-private user-library-read user-read-birthdate user-read-email user-top-read user-read-recently-played'
-end
+  # RSpotify.authenticate(ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'])
+  # use OmniAuth::Builder do
+  # provider :spotify, ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'], scope: 'user-read-private user-library-read user-read-birthdate user-read-email user-top-read user-read-recently-played'
+  # end
 
   set :views, 'app/views'
 end
@@ -41,14 +41,15 @@ get '/contact' do
   erb :contact
 end
 
-namespace '/spotify' do
-  before do
-    content_type 'application/json'
-  end
-  get '/artists/:artist_name' do
-    artists = RSpotify::Artist.search(params['artist_name'], limit: 4)
-    return artists.to_json
-  end
+# get '/spotify' do
+  # before do
+  #   content_type 'application/json'
+  # end
+# end
+get '/spotify/artists/:artist_name' do
+  # artists = RSpotify::Artist.search(params['artist_name'], limit: 4)
+  return {}
+  # return artists.to_json
 end
 
 post '/contact' do
