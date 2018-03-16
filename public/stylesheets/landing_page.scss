@@ -1,0 +1,393 @@
+@import 'colors';
+@import 'mixins';
+
+.bounce {
+	display: inline-block;
+	position: relative;
+	-moz-animation: bounce 1.5s infinite linear;
+	-o-animation: bounce 1.5s infinite linear;
+	-webkit-animation: bounce 1.5s infinite linear;
+	animation: bounce 1.5s infinite linear;
+}
+
+@-webkit-keyframes bounce {
+	0% {
+		top: 0;
+	}
+	50% {
+		top: -0.2em;
+	}
+	70% {
+		top: -0.3em;
+	}
+	100% {
+		top: 0;
+	}
+}
+@-moz-keyframes bounce {
+	0% {
+		top: 0;
+	}
+	50% {
+		top: -0.2em;
+	}
+	70% {
+		top: -0.3em;
+	}
+	100% {
+		top: 0;
+	}
+}
+@-o-keyframes bounce {
+	0% {
+		top: 0;
+	}
+	50% {
+		top: -0.2em;
+	}
+	70% {
+		top: -0.3em;
+	}
+	100% {
+		top: 0;
+	}
+}
+@-ms-keyframes bounce {
+	0% {
+		top: 0;
+	}
+	50% {
+		top: -0.2em;
+	}
+	70% {
+		top: -0.3em;
+	}
+	100% {
+		top: 0;
+	}
+}
+@keyframes bounce {
+	0% {
+		top: 0;
+	}
+	50% {
+		top: -0.2em;
+	}
+	70% {
+		top: -0.3em;
+	}
+	100% {
+		top: 0;
+	}
+}
+
+.white {
+	color: $palmos-off-white;
+}
+
+// ------------------------- MAIN WRAPPER ------------------------- //
+.landing-page-wrapper {
+}
+
+.landing-page-content {
+	height: 100vh;
+	width: 100%;
+	align-items: flex-end;
+	display: flex;
+	justify-content: center;
+	z-index: 2;
+	background: $palmos-blue;
+}
+
+// ------------------------- HERO TEXT ------------------------- //
+.landing-page-prose {
+	&--container {
+		position: absolute;
+		top: 30%;
+		left: 10%;
+		width: 80%;
+		max-width: 500px;
+		z-index: 3;
+	}
+	&--header {
+		color: $palmos-turquoise;
+		font-size: 6em;
+		font-weight: 500;
+		margin: 0 -4px;
+	}
+	&--text {
+		color: $palmos-off-white--dark;
+		font-size: 2em;
+		font-weight: 300;
+		line-height: 1.5em;
+		padding: 15px 0 25px 0;
+	}
+	&--sub-text {
+		color: $palmos-off-white--dark;
+		font-size: 1.7em;
+		font-weight: 200;
+		line-height: 1.5em;
+		padding: 0 0 30px 0;
+	}
+}
+
+// ------------------------- CTA BUTTONS ------------------------- //
+.cta-button {
+	@include no-user-select();
+	display: inline-block;
+	border: 1px solid $palmos-turquoise;
+	border-radius: 10px;
+	padding: 15px 50px;
+	width: fit-content;
+	color: $palmos-turquoise !important;
+	background: rgba(255, 255, 255, 0.02);
+	text-transform: uppercase;
+	font-weight: 500;
+	transition: background-color 0.3s, box-shadow 0.3s;
+
+	&:hover {
+		background: rgba(107, 213, 198, 0.1);
+		box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+	}
+
+	&:active {
+		@extend .cta-button:hover;
+		background: rgba(107, 213, 198, 0.2);
+	}
+
+	&--outline {
+		@extend .cta-button;
+		background: rgba(255, 255, 255, 0.02);
+		border: 1px solid $palmos-turquoise;
+	}
+
+	&--small-screen {
+		@extend .cta-button;
+		display: none;
+	}
+}
+
+// ------------------------- TEAM SECTION ------------------------- //
+.landing-page-team {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 5% 0;
+
+	&--header {
+		color: $palmos-off-white--dark;
+		font-size: 3em;
+		font-weight: 200;
+	}
+
+	&--cards {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		align-items: stretch;
+		justify-content: center;
+		margin: 50px 0;
+		border-radius: 7px;
+		width: 100%;
+		max-width: 1500px;
+		// background: rgba(107, 213, 198, 0.1);
+		background: rgba(0, 0, 0, 0.06);
+
+		&--profile {
+			padding: 20px;
+			// margin: 20px;
+			border-radius: 10px;
+			// background: rgba(107, 213, 198, 0.1);
+			text-align: center;
+			flex: 1;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background: rgba(0, 0, 0, 0.03);
+			}
+
+			&--img {
+				filter: grayscale(100%);
+				border-radius: 100px;
+				overflow: hidden;
+				width: 150px;
+			}
+
+			&--name {
+				color: $palmos-off-white--dark;
+				margin: 20px 0 0 0;
+				font-weight: 600;
+			}
+
+			&--title {
+				@extend .landing-page-team--cards--profile--name;
+				margin: 8px 0 20px 0;
+				font-weight: 500;
+			}
+
+			&--info {
+				color: $palmos-off-white--dark;
+				display: block;
+				font-weight: 300;
+			}
+			&--contact {
+				@extend .landing-page-team--cards--profile--info;
+				text-decoration: underline;
+				margin: 5px 0 0 0;
+			}
+		}
+	}
+}
+
+// ------------------------- CONTACT SECTION ------------------------- //
+.landing-page-contact {
+	@extend .landing-page-team;
+	background: white;
+	text-align: center;
+	padding-bottom: 2%;
+
+	&--header {
+		@extend .landing-page-team--header;
+		color: black;
+	}
+
+	&--sub-header {
+		margin-top: 2%;
+		font-size: 1.5em;
+		color: black;
+	}
+}
+
+// ------------------------- PRODUCT SECTION ------------------------- //
+.landing-page-product {
+	@extend .landing-page-team;
+	color: $palmos-off-white;
+	background: $palmos-blue;
+	padding-top: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+
+	&--header {
+		font-size: 5em;
+		font-weight: 100;
+		color: $palmos-off-white;
+		margin: 4%;
+	}
+
+	// &--sub-header {
+	// 	font-weight: 100;
+	// 	font-size: 1.5em;
+	// 	margin: 2% 0;
+	// 	color: $palmos-off-white;
+	// 	max-width: 1500px;
+	// 	// margin: 5%;
+	// }
+
+	&--cards {
+		@extend .landing-page-team--cards;
+		color: $palmos-off-white;
+		margin: 0;
+		padding: 0;
+		max-width: 1500px;
+		background: none;
+
+		&--section {
+			@extend .landing-page-team--cards--profile;
+			background: none;
+			text-align: left;
+
+			&--title {
+				color: $palmos-turquoise;
+				font-size: 3em;
+				font-weight: 400;
+				margin-bottom: 10px;
+			}
+
+			&--content {
+				font-weight: 200;
+				font-size: 1.5em;
+				line-height: 1.8em;
+			}
+
+			&:hover {
+				background: none;
+			}
+		}
+	}
+}
+
+// ---------------------- FOOTER SECTION ----------------- //
+.footer {
+	// margin: 70px 0 50px 0;
+	padding: 20px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	flex-direction: column;
+	width: 100%;
+	color: $palmos-grey;
+	font-size: 1.25em;
+	background: $palmos-background-color;
+
+	h3,
+	h4 {
+		line-height: 35px;
+	}
+}
+
+.footer a {
+	color: $palmos-grey;
+	text-decoration: underline;
+}
+
+// ---------------------- BREAKPOINTS ----------------- //
+@media (max-width: 1000px) {
+	.footer {
+		align-items: center;
+	}
+	.landing-page-prose {
+		&--container {
+			position: absolute;
+			top: 15%;
+			left: 5%;
+			width: 90%;
+			max-width: 500px;
+			z-index: 3;
+		}
+		&--header {
+			color: $palmos-turquoise;
+			font-size: 4em;
+			font-weight: 500;
+			margin: 0 -4px;
+		}
+		&--text {
+			color: $palmos-off-white--dark;
+			font-weight: 300;
+			line-height: 1.5em;
+			padding: 15px 0 25px 0;
+		}
+	}
+	.sponsor-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: center;
+		margin-bottom: 15px;
+		z-index: 2;
+
+		&--img {
+			@include no-user-select();
+			margin: 5px 15px;
+		}
+	}
+
+	.cta-button--small-screen {
+		display: block;
+	}
+}

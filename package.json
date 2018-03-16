@@ -5,9 +5,34 @@
 		"Landing page for Ripple.fx team - 2018 Mass Challenge Applicants",
 	"main": "index.js",
 	"scripts": {
-		"start": "rackup -s puma -p $PORT"
+		"start": "webpack-dev-server --config webpack.dev.js",
+		"build": "webpack --config webpack.prod.js"
 	},
 	"repository": "https://github.com/drewandre/drewandre.net.git",
 	"author": "Drew André <drewjamesandre@gmail.com>",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
+		"better-react-spinkit": "^2.0.4",
+		"css-loader": "^0.28.10",
+		"jparticles": "^2.0.1",
+		"node-sass": "^4.7.2",
+		"react": "^16.2.0",
+		"react-dom": "^16.2.0",
+		"sass-loader": "^6.0.6",
+		"style-loader": "^0.20.2",
+		"webpack": "^3.11.0"
+	},
+	"devDependencies": {
+		"clean-webpack-plugin": "^0.1.18",
+		"extract-text-webpack-plugin": "^3.0.2",
+		"file-loader": "^1.1.9",
+		"uglifyjs-webpack-plugin": "^1.2.0",
+		"url-loader": "^0.6.2",
+		"webpack-dev-server": "^2.11.1",
+		"webpack-merge": "^4.1.2"
+	}
 }

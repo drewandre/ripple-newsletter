@@ -1,0 +1,54 @@
+@import 'colors';
+@import 'mixins';
+
+.sign-up {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	display: grid;
+}
+
+#spinner {
+	margin: auto;
+	text-align: center;
+}
+
+#sign-up-button {
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	text-align: center;
+	width: 60%;
+	margin: 10px auto;
+	padding: 10px 30px;
+	border-radius: 50px;
+	transition: background-color 0.2s;
+}
+
+#email-button {
+	@extend #sign-up-button;
+	border: 1px solid #000;
+	color: black;
+	&:hover {
+		cursor: pointer;
+		background-color: darken(#fff, 4%);
+	}
+}
+
+#spotify-button {
+	@extend #sign-up-button;
+	background-color: $spotify-green-transparent;
+	&:hover {
+		cursor: pointer;
+		background-color: $spotify-green-hover-transparent;
+	}
+}
+
+#soundcloud-button {
+	@extend #sign-up-button;
+	background-color: $soundcloud-orange-transparent;
+	&:hover {
+		cursor: pointer;
+		background-color: $soundcloud-orange-hover-transparent;
+	}
+}

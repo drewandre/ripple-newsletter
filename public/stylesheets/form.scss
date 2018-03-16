@@ -1,0 +1,140 @@
+@import 'colors';
+@import 'mixins';
+
+.button-group {
+	margin: 30px auto;
+}
+
+#error {
+	border-bottom: 1px solid $error;
+}
+
+#form-disable {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1px solid $palmos-blue;
+	outline: none;
+	width: fit-content;
+	padding: 8px;
+	border-radius: 5px;
+	font-size: 1em;
+
+	&:hover {
+		background-color: darken(#fff, 5%);
+		cursor: pointer;
+	}
+}
+
+.sign-up {
+	margin: 2% auto;
+	padding: 0;
+	postition: relative;
+	float: right;
+	display: block;
+	width: 90%;
+}
+
+input::-webkit-input-placeholder {
+	color: #000;
+}
+input::-moz-placeholder {
+	color: #000;
+}
+input:-ms-input-placeholder {
+	color: #000;
+}
+input:-moz-placeholder {
+	color: #000;
+}
+
+.credentials[type='text'],
+.credentials[type='password'],
+.credentials[type='number'] {
+	margin: 2% auto;
+	padding: 2%;
+	width: 90%;
+	font-weight: 200;
+	letter-spacing: 2px;
+	font-size: 20px;
+	color: #000;
+	border: none;
+	outline: none;
+	background: transparent;
+	border-bottom: 1px solid black;
+}
+
+select {
+	@extend .credentials[type='text'];
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 90%;
+	border-radius: 0;
+	border: none;
+	outline: none;
+	background: transparent;
+	border-bottom: 1px solid black;
+}
+
+input:not([type='checkbox']) {
+	border: none;
+	outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.form-submit-button {
+	visibility: hidden;
+}
+
+.register-form-error {
+	width: 90%;
+	margin: 10px auto;
+	padding: 10px;
+	border-radius: 7px;
+	background-color: orange;
+}
+
+#artist h5 {
+	margin: 5px 0;
+	color: $off-white;
+}
+
+#artist {
+	display: inline-block;
+}
+
+.artist-icon {
+	background-color: $dropdown;
+	height: 120px;
+	width: 120px;
+	padding: 0;
+	clip-path: circle(50px at center);
+}
+
+.saved-artist-list {
+	margin: 25px auto 12px auto;
+	text-align: left;
+}
+
+#artist-text {
+	background: $dropdown;
+	color: #fff;
+	border: 1px solid $cta-background;
+	margin: 0 2% 2% 2%;
+	border-radius: 5px;
+	font-size: 16px;
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+#artist-icon-list {
+	text-align: center;
+	margin-bottom: 30px;
+	height: 150px;
+	overflow: hidden;
+}

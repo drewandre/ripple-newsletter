@@ -2,12 +2,17 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/flash'
-require 'sass/plugin/rack'
+
+# require 'rest-client'
+require 'rspotify'
+require 'rspotify/oauth'
+require 'omniauth'
+require 'omniauth-oauth2'
+require 'omniauth-spotify'
 require 'httparty'
 require 'json'
 
 enable :sessions
-
 set :bind, '0.0.0.0' # bind to all interfaces
 
 configure :development do
@@ -15,8 +20,11 @@ configure :development do
 end
 
 configure do
-  Sass::Plugin.options[:style] = :compressed
-  use Sass::Plugin::Rack
+  RSpotify.authenticate(ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'])
+  use OmniAuth::Builder do
+  provider :spotify, ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'], scope: 'user-read-private user-library-read user-read-birthdate user-read-email user-top-read user-read-recently-played'
+end
+
   set :views, 'app/views'
 end
 
@@ -31,6 +39,16 @@ end
 
 get '/contact' do
   erb :contact
+end
+
+namespace '/spotify' do
+  before do
+    content_type 'application/json'
+  end
+  get '/artists/:artist_name' do
+    artists = RSpotify::Artist.search(params['artist_name'], limit: 4)
+    return artists.to_json
+  end
 end
 
 post '/contact' do
