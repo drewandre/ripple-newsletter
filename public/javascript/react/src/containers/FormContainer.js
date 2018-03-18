@@ -5,12 +5,18 @@ import RegisterForm from './RegisterForm';
 export default class FormContainer extends Component {
 	constructor() {
 		super();
-		this.state = { signingUp: false };
+		this.state = { signingUp: false, loading: false };
 		this.startSigningUp = this.startSigningUp.bind(this);
+		this.startLoader = this.startLoader.bind(this);
 	}
 
 	startSigningUp(click) {
 		this.setState({ signingUp: !this.state.signingUp });
+	}
+
+	startLoader(click) {
+		click.preventDefault();
+		this.setState({ loading: true });
 	}
 
 	render() {
@@ -22,7 +28,15 @@ export default class FormContainer extends Component {
 					</h1>
 				</a>
 				{this.state.signingUp ? (
-					<RegisterForm goBack={() => this.setState({ signingUp: false })} />
+					<RegisterForm
+						goBack={this.startSigningUp}
+						startLoader={this.startLoader}
+					/>
+				) : this.state.loading ? (
+					// <div className="sign-up">
+					<div>
+						<CubeGrid id="spinner" size={100} color="#fff" />
+					</div>
 				) : (
 					<React.Fragment>
 						<p className="landing-page-contact--sub-header">
@@ -33,15 +47,12 @@ export default class FormContainer extends Component {
 							<a
 								// href="/auth/spotify"
 								id="spotify-button"
-								// onClick={this.startLoader}
+								onClick={this.startLoader}
 							>
-								SIGN UP THROUGH SPOTIFY
+								CONNECT THROUGH SPOTIFY
 							</a>
-							{/* <a id="soundcloud-button" onClick={this.startLoader}>
-								SIGN UP THROUGH SOUNDCLOUD
-							</a> */}
 							<a id="email-button" onClick={this.startSigningUp}>
-								SIGN UP THROUGH EMAIL
+								CONNECT THROUGH EMAIL
 							</a>
 						</div>
 					</React.Fragment>

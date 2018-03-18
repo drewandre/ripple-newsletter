@@ -1,1 +1,1 @@
-web: rackup -s puma -p $PORT
+web: thin -R config.ru start

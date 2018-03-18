@@ -33,13 +33,13 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CleanWebpackPlugin([path.resolve(__dirname, 'dist')]),
+		new CleanWebpackPlugin([path.resolve(__dirname, 'public', 'dist')]),
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		extractCSS
 	],
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'public', 'dist'),
 		filename: 'bundle.js'
 	},
 	module: {
@@ -48,18 +48,6 @@ module.exports = {
 			{
 				test: /\.scss$/,
 				loader: extractCSS.extract(['css-loader', 'sass-loader'])
-			},
-			{
-				test: /\.(png|jp(e*)g)$/,
-				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							limit: 80000, // Convert images < 8kb to base64 strings
-							name: 'images/[hash]-[name].[ext]'
-						}
-					}
-				]
 			}
 		]
 	}

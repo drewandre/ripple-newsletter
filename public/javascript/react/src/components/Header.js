@@ -5,15 +5,13 @@ const Header = props => {
 		<header className="navigation-container">
 			<nav className="navigation-container--items">
 				<div className="nav-mobile">
-					<a id="nav-toggle" href="#">
+					<a id="nav-toggle">
 						<span />
 					</a>
 				</div>
 				<ul className="nav-list">
 					<li>
-						<a href="#" className="disable-link">
-							Newsletter (coming soon)
-						</a>
+						<a className="disable-link">Newsletter (coming soon)</a>
 					</li>
 					<li>
 						<a href="#our-team">Our Team</a>

@@ -7,7 +7,7 @@ import Product from '../components/Product';
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 
-class App extends Component {
+export default class App extends Component {
 	render() {
 		return (
 			<React.Fragment>
@@ -21,5 +21,3 @@ class App extends Component {
 		);
 	}
 }
-
-export default App;

@@ -477,10 +477,12 @@ class RegisterForm extends Component {
 				{artistList}
 				{artistIcons}
 				<div className="button-group">
-					<button onClick={this.props.goBack} id="form-disable">
+					<button onClick={this.props.goBack} className="form-button">
 						Go Back
 					</button>
-					{/* <button className="form-submit-button" type="submit" /> */}
+					<button type="submit" className="form-button">
+						Submit
+					</button>
 				</div>
 			</form>
 		);

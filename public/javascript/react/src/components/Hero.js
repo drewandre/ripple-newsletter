@@ -7,27 +7,12 @@ const Hero = props => {
 				<h1 className="landing-page-prose--header">ripple.fx</h1>
 				<h3 className="landing-page-prose--text">
 					We are a Boston-based team of engineers and musicians working to
-					revolutionize the way you experience music. We are developing the
-					first social music marketplace to bridge the gap between fans and
-					artists.
+					revolutionize the way you experience music.
 				</h3>
-				{/* <h3 className="landing-page-prose--sub-text"> */}
-				{/* We're designing a mobile app that streams like Spotify, but shares
-					like Instagram. Interested? */}
-				{/* Check out what we're building
-					<span>
-						<a href="#our-product">
-							<i
-								className="fa fa-caret-down bounce"
-								style={{
-									position: 'relative',
-									left: '23px',
-									top: '1px'
-								}}
-							/>
-						</a>
-					</span>
-				</h3> */}
+				<h3 className="landing-page-prose--text">
+					We are developing the first social music marketplace to bridge the gap
+					between fans and artists.
+				</h3>
 				<a href="#contact" className="cta-button--small-screen">
 					REQUEST EARLY ACCESS
 				</a>
@@ -37,6 +22,9 @@ const Hero = props => {
 				<div id="particles-js--overlay" />
 				<div id="landing-page-team--overlay" />
 			</div>
+			<a href="#our-product" className="bounce">
+				<i className="fa fa-caret-down fa-5x" />
+			</a>
 		</div>
 	);
 };

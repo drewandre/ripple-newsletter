@@ -9,13 +9,14 @@
 	border-bottom: 1px solid $error;
 }
 
-#form-disable {
+.form-button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border: 1px solid $palmos-blue;
 	outline: none;
 	width: fit-content;
 	padding: 8px;
+	margin: 0 10px;
 	border-radius: 5px;
 	font-size: 1em;
 

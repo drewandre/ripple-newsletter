@@ -8,6 +8,10 @@ $link-hover-color: $palmos-turquoise;
 $nav-font-color: $palmos-off-white;
 $infinity: 999;
 
+.applyBlueBackground {
+	background: $palmos-blue;
+}
+
 .social-media-icon {
 	color: $palmos-off-white;
 	margin: 0 10px;
@@ -27,7 +31,6 @@ $infinity: 999;
 	position: fixed;
 	height: fit-content;
 	width: 100%;
-	background: none;
 	z-index: $infinity;
 	padding: 25px 35px;
 	-webkit-transition: background-color 0.5s, padding 0.5s;
@@ -99,9 +102,8 @@ nav {
 .nav-mobile {
 	display: none;
 	position: absolute;
-	top: 20px;
-	right: 20px;
-	height: $nav-height;
+	top: 23px;
+	right: 0;
 	width: $nav-height;
 }
 
@@ -110,19 +112,18 @@ nav {
 		display: block;
 	}
 	.navigation-container {
-		padding: 0;
+		padding: 25px 35px;
+		background: $palmos-blue;
 		width: 100%;
 	}
 	nav {
 		width: 100%;
-		padding: $nav-height 0;
 		ul {
 			padding-top: 15px;
 			display: none;
 			li {
 				float: none;
 				a {
-					padding: 15px;
 					line-height: 20px;
 				}
 				ul li a {

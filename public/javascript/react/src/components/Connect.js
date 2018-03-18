@@ -5,11 +5,9 @@ import { CubeGrid } from 'better-react-spinkit';
 const Connect = props => {
 	return (
 		<div className="landing-page-contact">
-			<a id="contact">
-				<h1 className="landing-page-contact--header">
-					Let's connect through music.
-				</h1>
-			</a>
+			<h1 className="landing-page-contact--header">
+				Let's connect through music.
+			</h1>
 			<p className="landing-page-contact--sub-header">
 				This will give us your email and music tastes.
 			</p>

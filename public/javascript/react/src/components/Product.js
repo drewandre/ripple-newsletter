@@ -3,11 +3,10 @@ import React from 'react';
 const Product = props => {
 	return (
 		<div className="landing-page-product">
-			<a id="our-product">
-				<h1 className="landing-page-product--header">
-					Connect. Support. Explore.
-				</h1>
-			</a>
+			<a id="our-product" />
+			<h1 className="landing-page-product--header">
+				Connect. Support. Explore.
+			</h1>
 			{/* <h3 className="landing-page-product--sub-header">
 				We imagine a social music experience that bridges the gap between
 				artists and fans.
@@ -46,6 +45,7 @@ const Product = props => {
 					</h4>
 				</div>
 			</div>
+			<a id="contact" />
 		</div>
 	);
 };

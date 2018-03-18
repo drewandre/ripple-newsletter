@@ -1,13 +1,20 @@
 @import 'colors';
 @import 'mixins';
 
+#contact {
+	margin-top: 15px;
+}
+
 .bounce {
+	z-index: 999;
+	cursor: pointer;
+	pointer-events: all;
 	display: inline-block;
 	position: relative;
-	-moz-animation: bounce 1.5s infinite linear;
-	-o-animation: bounce 1.5s infinite linear;
-	-webkit-animation: bounce 1.5s infinite linear;
-	animation: bounce 1.5s infinite linear;
+	-moz-animation: bounce 1s infinite linear;
+	-o-animation: bounce 1s infinite linear;
+	-webkit-animation: bounce 1s infinite linear;
+	animation: bounce 1s infinite linear;
 }
 
 @-webkit-keyframes bounce {
@@ -15,10 +22,10 @@
 		top: 0;
 	}
 	50% {
-		top: -0.2em;
+		top: -0.5em;
 	}
 	70% {
-		top: -0.3em;
+		top: -0.7em;
 	}
 	100% {
 		top: 0;
@@ -29,10 +36,10 @@
 		top: 0;
 	}
 	50% {
-		top: -0.2em;
+		top: -0.5em;
 	}
 	70% {
-		top: -0.3em;
+		top: -0.7em;
 	}
 	100% {
 		top: 0;
@@ -43,10 +50,10 @@
 		top: 0;
 	}
 	50% {
-		top: -0.2em;
+		top: -0.5em;
 	}
 	70% {
-		top: -0.3em;
+		top: -0.7em;
 	}
 	100% {
 		top: 0;
@@ -57,10 +64,10 @@
 		top: 0;
 	}
 	50% {
-		top: -0.2em;
+		top: -0.5em;
 	}
 	70% {
-		top: -0.3em;
+		top: -0.7em;
 	}
 	100% {
 		top: 0;
@@ -71,10 +78,10 @@
 		top: 0;
 	}
 	50% {
-		top: -0.2em;
+		top: -0.5em;
 	}
 	70% {
-		top: -0.3em;
+		top: -0.7em;
 	}
 	100% {
 		top: 0;
@@ -103,7 +110,7 @@
 .landing-page-prose {
 	&--container {
 		position: absolute;
-		top: 30%;
+		top: 24%;
 		left: 10%;
 		width: 80%;
 		max-width: 500px;
@@ -120,7 +127,7 @@
 		font-size: 2em;
 		font-weight: 300;
 		line-height: 1.5em;
-		padding: 15px 0 25px 0;
+		padding: 15px 0;
 	}
 	&--sub-text {
 		color: $palmos-off-white--dark;
@@ -175,6 +182,7 @@
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
 	padding: 5% 0;
 
 	&--header {
@@ -256,6 +264,7 @@
 
 	&--sub-header {
 		margin-top: 2%;
+		padding: 2%;
 		font-size: 1.5em;
 		color: black;
 	}
@@ -278,15 +287,6 @@
 		color: $palmos-off-white;
 		margin: 4%;
 	}
-
-	// &--sub-header {
-	// 	font-weight: 100;
-	// 	font-size: 1.5em;
-	// 	margin: 2% 0;
-	// 	color: $palmos-off-white;
-	// 	max-width: 1500px;
-	// 	// margin: 5%;
-	// }
 
 	&--cards {
 		@extend .landing-page-team--cards;
@@ -328,14 +328,13 @@
 	height: 150px;
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	flex-direction: column;
 	width: 100%;
 	color: $palmos-grey;
 	font-size: 1.25em;
 	background: $palmos-background-color;
 
-	h3,
 	h4 {
 		line-height: 35px;
 	}
@@ -348,13 +347,22 @@
 
 // ---------------------- BREAKPOINTS ----------------- //
 @media (max-width: 1000px) {
-	.footer {
-		align-items: center;
+	.bounce {
+		display: none;
+	}
+	.cta-button--outline {
+		padding: 15px 20px;
+	}
+	.landing-page-prose--text {
+		font-size: 1.3em;
+	}
+	.landing-page-product--header {
+		font-size: 4em;
 	}
 	.landing-page-prose {
 		&--container {
 			position: absolute;
-			top: 15%;
+			top: 10%;
 			left: 5%;
 			width: 90%;
 			max-width: 500px;
