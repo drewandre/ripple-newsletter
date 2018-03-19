@@ -2,6 +2,7 @@
 @import 'mixins';
 
 .button-group {
+	width: 80%;
 	margin: 30px auto;
 }
 
@@ -14,11 +15,11 @@
 	-moz-appearance: none;
 	border: 1px solid $palmos-blue;
 	outline: none;
-	width: fit-content;
+	width: 100%;
 	padding: 8px;
-	margin: 0 10px;
 	border-radius: 5px;
 	font-size: 1em;
+	transition: background 0.5s;
 
 	&:hover {
 		background-color: darken(#fff, 5%);
@@ -100,13 +101,21 @@ input::-webkit-inner-spin-button {
 	background-color: orange;
 }
 
-#artist h5 {
-	margin: 5px 0;
-	color: $off-white;
-}
-
 #artist {
 	display: inline-block;
+	margin: 0 1%;
+	transition: background 0.4s;
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.1);
+		border-radius: 6px;
+		cursor: pointer;
+	}
+}
+
+#artist h5 {
+	margin: 5px 0;
+	color: #000;
 }
 
 .artist-icon {
@@ -118,13 +127,13 @@ input::-webkit-inner-spin-button {
 }
 
 .saved-artist-list {
-	margin: 25px auto 12px auto;
+	margin: 20px auto;
 	text-align: left;
 }
 
 #artist-text {
-	background: $dropdown;
-	color: #fff;
+	background: $palmos-off-white--dark;
+	color: $palmos-background-color;
 	border: 1px solid $cta-background;
 	margin: 0 2% 2% 2%;
 	border-radius: 5px;
@@ -135,7 +144,7 @@ input::-webkit-inner-spin-button {
 
 #artist-icon-list {
 	text-align: center;
-	margin-bottom: 30px;
+	margin: 30px 0;
 	height: 150px;
 	overflow: hidden;
 }

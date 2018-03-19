@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { Pulse } from 'better-react-spinkit';
+
 import TextInput from '../components/TextInput';
 import Select from '../components/Select';
 import ArtistIcons from '../components/ArtistIcons';
 import ArtistList from '../components/ArtistList';
-
-// import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 const url = 'https://us17.api.mailchimp.com/3.0/lists/a1739a408d/members';
 
@@ -17,6 +17,7 @@ class RegisterForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			loading: false,
 			errors: {},
 			firstName: '',
 			lastName: '',
@@ -30,11 +31,13 @@ class RegisterForm extends Component {
 			searchedGenres: [],
 			lastKeyPressedTime: 0,
 			subscriberTypes: [
-				'passive listener',
-				'active listener',
-				'musician',
-				'verified artist',
-				'fan'
+				'ocassioanal music listener',
+				'active music explorer',
+				'tastemaker',
+				'casual musician/beats on the side',
+				'semi-professional musician',
+				'professional musician/performer',
+				'music industry professional'
 			]
 		};
 
@@ -68,46 +71,52 @@ class RegisterForm extends Component {
 		if (event) {
 			event.preventDefault();
 		}
-		// if (
-		// 	this.validateFirstName(this.state.firstName) &&
-		// 	this.validateLastName(this.state.lastName) &&
-		// 	this.validateEmail(this.state.email) &&
-		// 	this.validateAge(this.state.age) &&
-		// 	this.validateZipcode(this.state.zipcode) &&
-		// 	this.validateSubscriberType(this.state.sucscriberType) &&
-		// 	this.validateArtists(this.state.artists) &&
-		// 	this.validateGenres(this.state.genres)
-		// ) {
-		// 	let formPayLoad = {
-		// 		firstName: this.state.firstName,
-		// 		lastName: this.state.lastName,
-		// 		email: this.state.email,
-		// 		age: this.state.age,
-		// 		zipcode: this.state.zipcode,
-		// 		subscriberType: this.state.subscriberType,
-		// 		artists: this.state.artists,
-		// 		genres: this.state.genres
-		// 	};
-		// 	// fetch(`/register`, {
-		// 	// 	method: 'POST',
-		// 	// 	body: JSON.stringify(formPayload)
-		// 	// });
-		// 	this.handleClearForm(event);
-		// }
-
-		debugger;
-
-		// response = RestClient::Request.execute(
-		// 	method: :post,
-		// 	user: 'anything',
-		// 	password: '526e48d4d5e6341fa9e2f6f174149243',
-		// 	url: "https://us17.api.mailchimp.com/3.0/lists/a1739a408d/members",
-		// 	payload: { 'email_address':email, "status":"subscribed", merge_fields:{"NAME":name, "ZIPCODE":zipcode, "CATEGORY":category, "COMMENT":comment, "AGE":age} }.to_json,
-		// 	headers: { :accept => :json, content_type: :json }
-		// )
+		if (
+			this.validateFirstName(this.state.firstName) &&
+			this.validateLastName(this.state.lastName) &&
+			this.validateEmail(this.state.email) &&
+			this.validateAge(this.state.age) &&
+			this.validateZipcode(this.state.zipcode) &&
+			this.validateSubscriberType(this.state.subscriberType) &&
+			this.validateArtists(this.state.artists) &&
+			this.validateGenres(this.state.genres)
+		) {
+			var artist_string = '';
+			for (var i = 0; i < this.state.artists.length; i++) {
+				artist_string += this.state.artists[i].id;
+				artist_string += ',';
+			}
+			var payload = {
+				email_address: this.state.email,
+				status: 'subscribed',
+				merge_fields: {
+					FIRST_NAME: this.state.firstName,
+					LAST_NAME: this.state.lastName,
+					ZIPCODE: this.state.zipcode,
+					CATEGORY: this.state.subscriberType,
+					AGE: this.state.age,
+					ARTISTJSON: artist_string
+				}
+			};
+			fetch(`/register`, {
+				method: 'POST',
+				body: JSON.stringify(payload)
+			})
+				.then(response => {
+					console.log(response);
+					this.handleClearForm(event);
+					this.props.thankYou();
+				})
+				.catch(e => {
+					this.handleClearForm(event);
+					this.props.thankYou();
+					console.log('error: ' + e);
+				});
+		}
 	}
 
 	searchArtistsByName(artist_name) {
+		this.setState({ loading: true });
 		if (Date.now() - this.state.lastKeyPressedTime > 200) {
 			fetch(`/spotify/artists/${artist_name}`)
 				.then(response => {
@@ -117,11 +126,13 @@ class RegisterForm extends Component {
 				})
 				.then(response => response.json())
 				.then(body => {
+					body = JSON.parse(body);
+					body = body.artists.items;
 					var artist_arr = [];
 					var imageSrc;
 					var id;
 					if (Object.keys(body).length > 0) {
-						for (var i = 0; i < body.length; i++) {
+						for (var i = 0; i < Object.keys(body).length; i++) {
 							id = body[i].id;
 							name = body[i].name;
 							imageSrc = body[i].images;
@@ -132,8 +143,10 @@ class RegisterForm extends Component {
 							}
 							artist_arr.push({ id: id, name: name, image: imageSrc });
 						}
+						this.setState({ searchedArtists: artist_arr, loading: false });
+					} else {
+						this.setState({ searchedArtists: [], loading: false });
 					}
-					this.setState({ searchedArtists: artist_arr });
 				});
 		}
 	}
@@ -199,6 +212,8 @@ class RegisterForm extends Component {
 		var input = event.target.value.replace(stringWhiteSpaceTrim, '');
 		if (input != '') {
 			setTimeout(() => this.searchArtistsByName(input), 200);
+		} else {
+			this.setState({ loading: false, searchedArtists: [] });
 		}
 	}
 
@@ -252,7 +267,7 @@ class RegisterForm extends Component {
 	}
 
 	validateAge(age) {
-		if ((age[0] = '0')) {
+		if (age[0] === '0') {
 			age = age.slice(1, age.length);
 		}
 		if (age === '') {
@@ -345,47 +360,6 @@ class RegisterForm extends Component {
 		});
 	}
 
-	componentDidMount() {
-		// fetch(`/user`)
-		// 	.then(response => {
-		// 		if (response.ok) {
-		// 			return response;
-		// 		} else {
-		// 			return null;
-		// 		}
-		// 	})
-		// 	.then(response => response.json())
-		// 	.then(user => {
-		// 		var userPayload = [];
-		// 		var artistPayload = [];
-		// 		for (var i = 0; i < user.top_artist_ids.length; i++) {
-		// 			artistPayload.push({
-		// 				id: user.top_artist_ids[i],
-		// 				name: user.top_artist_names[i],
-		// 				images: user.top_artist_images[i]
-		// 			});
-		// 		}
-		// 		userPayload.push(user, artistPayload);
-		// 		return userPayload;
-		// 	})
-		// 	.then(userPayload => {
-		// 		this.setState({
-		// 			firstName: userPayload[0].name,
-		// 			email: userPayload[0].email,
-		// 			age: userPayload[0].age,
-		// 			artists: userPayload[1],
-		// 			genres: userPayload[0].top_genres
-		// 		});
-		// 		return userPayload;
-		// 	})
-		// 	.then(userPayload => {
-		// 		this.handleFormSubmit(false);
-		// 	})
-		// 	.catch(function(error) {
-		// 		console.log('no user found');
-		// 	});
-	}
-
 	render() {
 		let artistIcons = [];
 		let artistList = [];
@@ -420,7 +394,7 @@ class RegisterForm extends Component {
 		}
 
 		return (
-			<form className="sign-up" onSubmit={this.handleFormSubmit}>
+			<form className="sign-up">
 				{errorDiv}
 				<TextInput
 					error={Object.keys(this.state.errors).includes('firstName')}
@@ -475,106 +449,21 @@ class RegisterForm extends Component {
 					handlerFunction={this.handleArtists}
 				/>
 				{artistList}
+				{this.state.loading ? (
+					<Pulse id="spinner" size={50} color="#2A486A" />
+				) : null}
 				{artistIcons}
 				<div className="button-group">
-					<button onClick={this.props.goBack} className="form-button">
+					{/* <button onClick={this.props.goBack} className="form-button">
 						Go Back
-					</button>
-					<button type="submit" className="form-button">
+					</button> */}
+					<button className="form-button" onClick={this.handleFormSubmit}>
 						Submit
 					</button>
 				</div>
 			</form>
 		);
 	}
-
-	// render() {
-	// 	return (
-	// 		<form action={url} method="POST" noValidate>
-	// 			<input type="hidden" name="u" value="eb05e4f830c2a04be30171b01" />
-	// 			<input type="hidden" name="id" value="8281a64779" />
-	// 			<label htmlFor="MERGE0">
-	// 				Email
-	// 				<input
-	// 					type="email"
-	// 					name="EMAIL"
-	// 					id="MERGE0"
-	// 					value={this.state.emailValue}
-	// 					onChange={e => {
-	// 						this.setState({ emailValue: e.target.value });
-	// 					}}
-	// 					autoCapitalize="off"
-	// 					autoCorrect="off"
-	// 				/>
-	// 			</label>
-	// 			<label htmlFor="MERGE1">
-	// 				First name
-	// 				<input
-	// 					type="text"
-	// 					name="FNAME"
-	// 					id="MERGE1"
-	// 					value={this.state.fNameValue}
-	// 					onChange={e => {
-	// 						this.setState({ fNameValue: e.target.value });
-	// 					}}
-	// 				/>
-	// 			</label>
-	// 			<label htmlFor="MERGE2">
-	// 				Last name
-	// 				<input
-	// 					type="text"
-	// 					name="LNAME"
-	// 					id="MERGE2"
-	// 					value={this.state.lNameValue}
-	// 					onChange={e => {
-	// 						this.setState({ lNameValue: e.target.value });
-	// 					}}
-	// 				/>
-	// 			</label>
-	// 			<input
-	// 				type="submit"
-	// 				value="Subscribe"
-	// 				name="subscribe"
-	// 				id="mc-embedded-subscribe"
-	// 				className="button"
-	// 			/>
-	//
-	// 			<div
-	// 				style={{ position: 'absolute', left: '-5000px' }}
-	// 				aria-hidden="true"
-	// 				aria-label="Please leave the following three fields empty"
-	// 			>
-	// 				<label htmlFor="b_name">Name: </label>
-	// 				<input
-	// 					type="text"
-	// 					name="b_name"
-	// 					tabIndex="-1"
-	// 					value=""
-	// 					placeholder="Freddie"
-	// 					id="b_name"
-	// 				/>
-	//
-	// 				<label htmlFor="b_email">Email: </label>
-	// 				<input
-	// 					type="email"
-	// 					name="b_email"
-	// 					tabIndex="-1"
-	// 					value=""
-	// 					placeholder="youremail@gmail.com"
-	// 					id="b_email"
-	// 				/>
-	//
-	// 				<label htmlFor="b_comment">Comment: </label>
-	// 				<textarea
-	// 					name="b_comment"
-	// 					tabIndex="-1"
-	// 					placeholder="Please comment"
-	// 					id="b_comment"
-	// 				/>
-	// 			</div>
-	// 		</form>
-	// 	);
-	// }
 }
 
 export default RegisterForm;

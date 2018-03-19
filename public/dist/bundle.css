@@ -10,6 +10,7 @@
   max-width: 600px; }
 
 .button-group {
+  width: 80%;
   margin: 30px auto; }
 
 #error {
@@ -20,11 +21,11 @@
   -moz-appearance: none;
   border: 1px solid #28476c;
   outline: none;
-  width: fit-content;
+  width: 100%;
   padding: 8px;
-  margin: 0 10px;
   border-radius: 5px;
-  font-size: 1em; }
+  font-size: 1em;
+  transition: background 0.5s; }
   .form-button:hover {
     background-color: #f2f2f2;
     cursor: pointer; }
@@ -94,12 +95,18 @@ input::-webkit-inner-spin-button {
   border-radius: 7px;
   background-color: orange; }
 
+#artist {
+  display: inline-block;
+  margin: 0 1%;
+  transition: background 0.4s; }
+  #artist:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    cursor: pointer; }
+
 #artist h5 {
   margin: 5px 0;
-  color: #e6e0cc; }
-
-#artist {
-  display: inline-block; }
+  color: #000; }
 
 .artist-icon {
   background-color: #343434;
@@ -109,12 +116,12 @@ input::-webkit-inner-spin-button {
   clip-path: circle(50px at center); }
 
 .saved-artist-list {
-  margin: 25px auto 12px auto;
+  margin: 20px auto;
   text-align: left; }
 
 #artist-text {
-  background: #343434;
-  color: #fff;
+  background: #b7c1d6;
+  color: #292929;
   border: 1px solid #cbf1f3;
   margin: 0 2% 2% 2%;
   border-radius: 5px;
@@ -124,7 +131,7 @@ input::-webkit-inner-spin-button {
 
 #artist-icon-list {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px 0;
   height: 150px;
   overflow: hidden; }
 
@@ -135,7 +142,7 @@ input::-webkit-inner-spin-button {
   display: grid; }
 
 #spinner {
-  margin: auto;
+  margin: 15px auto;
   text-align: center; }
 
 #sign-up-button, #email-button, #spotify-button, #soundcloud-button {
@@ -374,7 +381,7 @@ input::-webkit-inner-spin-button {
     font-size: 5em;
     font-weight: 100;
     color: #f8f9fb;
-    margin: 4%; }
+    margin: 8% 4% 4% 4%; }
   .landing-page-product--cards {
     color: #f8f9fb;
     margin: 0;

@@ -11,6 +11,7 @@ const Select = props => {
 
 	return (
 		<select
+			id={props.error ? 'error' : null}
 			className={props.className}
 			name={props.name}
 			value={props.selectedOption}
