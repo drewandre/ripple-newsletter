@@ -6,7 +6,7 @@ $.fn.isInViewport = function() {
 	return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
-let mountAnimation = false;
+let mountAnimation = true;
 
 $(document).ready(function() {
 	if (mountAnimation) {

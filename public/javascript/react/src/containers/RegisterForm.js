@@ -31,7 +31,7 @@ class RegisterForm extends Component {
 			searchedGenres: [],
 			lastKeyPressedTime: 0,
 			subscriberTypes: [
-				'ocassioanal music listener',
+				'occasional music listener',
 				'active music explorer',
 				'tastemaker',
 				'casual musician/beats on the side',

@@ -28,16 +28,21 @@ end
 configure do
   RSpotify.authenticate("94edf5f4258044c9871a291fa7cafbae", "331e3742f32f44a4b1c3bb65839ad605")
   use OmniAuth::Builder do
-    provider :spotify, ENV['SPOTIFY_ID'], ENV['SPOTIFY_SECRET'], scope: 'user-read-private user-library-read user-read-birthdate user-read-email user-top-read user-read-recently-played'
+    provider :spotify, '94edf5f4258044c9871a291fa7cafbae', '331e3742f32f44a4b1c3bb65839ad605', scope: 'user-read-private user-library-read user-read-birthdate user-read-email user-top-read user-read-recently-played'
   end
   RSpotify.raw_response = true
-  set :views, 'app/views'
+  # set :views, 'app/views'
+  # binding.pry
+  set :public_folder  , File.expand_path('../public', __FILE__)
+  set :views          , File.expand_path('../app/views', __FILE__)
+  set :root           , File.dirname(__FILE__)
+  set :show_exceptions, development?
 end
 
-Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
-  require file
-  also_reload file
-end
+# Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
+#   require file
+#   also_reload file
+# end
 
 get '/' do
   erb :index

@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2e97647f92892b1e5098"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2e32c23b2ab7950c2c15"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -40852,7 +40852,7 @@ $.fn.isInViewport = function () {
 	return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
-var mountAnimation = false;
+var mountAnimation = true;
 
 $(document).ready(function () {
 	if (mountAnimation) {
@@ -43247,7 +43247,7 @@ var RegisterForm = function (_Component) {
 			searchedArtists: [],
 			searchedGenres: [],
 			lastKeyPressedTime: 0,
-			subscriberTypes: ['occasional music streamer', 'active listener', 'musician', 'professional artist', 'producer', 'music marketer']
+			subscriberTypes: ['occasional music listener', 'active music explorer', 'tastemaker', 'casual musician/beats on the side', 'semi-professional musician', 'professional musician/performer', 'music industry professional']
 		};
 
 		_this.searchArtistsByName = _this.searchArtistsByName.bind(_this);
