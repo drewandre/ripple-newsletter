@@ -37,6 +37,7 @@ configure do
   set :views          , File.expand_path('../app/views', __FILE__)
   set :root           , File.dirname(__FILE__)
   set :show_exceptions, development?
+  set :server, :thin
 end
 
 # Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
